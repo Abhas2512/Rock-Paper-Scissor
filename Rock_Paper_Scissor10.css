@@ -1,0 +1,146 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#FFF7F0;
+  text-align:center;
+  color:#333;
+  padding:30px;
+}
+
+/* title */
+h1{
+  margin-bottom:10px;
+}
+
+/* scoreboard */
+.scoreboard{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  font-size:22px;
+}
+
+/* button row */
+.choices{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-top:40px;
+}
+
+/* main button */
+.choice{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+  font-size:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  transition:.3s;
+  color:white;
+  box-shadow:
+    inset 0 0 15px rgba(255,255,255,0.5),  /* shiny glossy highlight inside button-->Makes it look 3D + polished*/
+    0 10px 20px rgba(0,0,0,0.25);  /*Outer Shadow-->button looks lifted off screen*/
+}
+
+/* emoji */
+.choice span{
+  transition:.3s;
+}
+
+/* hover */
+.choice:hover{
+  transform:translateY(-12px) scale(1.07);
+}
+
+.choice:hover span{
+  transform:scale(1.2) rotate(8deg);
+}
+
+/* click press */
+.choice:active{
+  transform:scale(.9);
+}
+
+/* colors */
+.rock{ background:linear-gradient(145deg,#ff7b7b,#ff2f2f); }
+.paper{ background:linear-gradient(145deg,#6faeff,#2f6cff); }
+.scissor{ background:linear-gradient(145deg,#ffe066,#ffc400); }
+
+/* glow ring */
+.choice::before{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:50%;
+  background:linear-gradient(45deg,#fff,transparent,#fff);
+  opacity:0;
+}
+
+.choice:hover::before{
+  opacity:.8;
+  animation:spin 2s linear infinite;
+}
+
+@keyframes spin{
+  to{ transform:rotate(360deg); }
+}
+
+/* result text */
+#resultText{
+  margin-top:40px;
+  font-size:28px;
+  font-weight:bold;
+  min-height:40px;
+}
+
+/* reset button */
+#reset{
+  margin-top:30px;
+  padding:15px 35px;
+  border:none;
+  border-radius:12px;
+  background:#6BCB77;
+  font-size:18px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+#reset:hover{
+  transform:scale(1.1);
+}
+
+/* ripple effect */
+.ripple{
+  position:absolute;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:rgba(255,255,255,.7);
+  animation:ripple .5s ease-out;
+}
+
+@keyframes ripple{
+  to{
+    transform:scale(8);
+    opacity:0;
+  }
+}
+
+/* winner highlight */
+.win{
+  box-shadow:0 0 25px #00ff88;
+}
+
+.lose{
+  box-shadow:0 0 25px #ff3b3b;
+}
